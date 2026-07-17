@@ -1,0 +1,199 @@
+@import "tailwindcss";
+
+/* ─── Brand Design Tokens ─── */
+@theme {
+  /* Primary palette — derived from Bask app global.css + app.json */
+  --color-bask-bg: #0A0F1A;
+  --color-bask-surface: #0D1320;
+  --color-bask-elevated: #111B2A;
+  --color-bask-border: #1A2530;
+  --color-bask-border-light: #243240;
+  --color-bask-accent: #16B5A4;
+  --color-bask-accent-bright: #2DD4BF;
+  --color-bask-accent-dim: #0D6B62;
+  --color-bask-foreground: #F5F7FA;
+  --color-bask-muted: #8B9CA8;
+  --color-bask-subtle: #5A6878;
+  --color-bask-success: #4ADE80;
+  --color-bask-warning: #FBBF24;
+  --color-bask-danger: #F87171;
+
+  /* Typography */
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+
+  /* Custom animations */
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-glow: glow-pulse 4s ease-in-out infinite;
+  --animate-shimmer: shimmer 2.5s linear infinite;
+  --animate-fade-up: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  --animate-bar-grow: bar-grow 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-14px); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.35; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.08); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bar-grow {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+
+/* ─── Base Styles ─── */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    background-color: var(--color-bask-bg);
+    color: var(--color-bask-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: color-mix(in srgb, var(--color-bask-accent) 30%, transparent);
+    color: var(--color-bask-foreground);
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-bask-bg);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-bask-border-light);
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-bask-accent-dim);
+  }
+}
+
+/* ─── Component Utilities ─── */
+@layer components {
+  .gradient-text {
+    background: linear-gradient(
+      135deg,
+      var(--color-bask-accent-bright) 0%,
+      var(--color-bask-accent) 50%,
+      #5EEAD4 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .glass {
+    background: rgba(13, 19, 32, 0.6);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid var(--color-bask-border);
+  }
+
+  .glass-strong {
+    background: rgba(17, 27, 42, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--color-bask-border);
+  }
+
+  .glow-accent {
+    box-shadow:
+      0 0 40px -8px color-mix(in srgb, var(--color-bask-accent) 50%, transparent),
+      0 0 80px -20px color-mix(in srgb, var(--color-bask-accent) 30%, transparent);
+  }
+
+  .glow-accent-sm {
+    box-shadow: 0 0 24px -6px color-mix(in srgb, var(--color-bask-accent) 45%, transparent);
+  }
+
+  .bg-grid {
+    background-image: 
+      linear-gradient(to right, color-mix(in srgb, var(--color-bask-border) 50%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in srgb, var(--color-bask-border) 50%, transparent) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+
+  .bg-radial-fade {
+    background: radial-gradient(
+      ellipse 80% 50% at 50% 0%,
+      color-mix(in srgb, var(--color-bask-accent) 12%, transparent) 0%,
+      transparent 70%
+    );
+  }
+}
+
+/* ─── Phone Mockup ─── */
+.phone-frame {
+  position: relative;
+  width: 280px;
+  height: 580px;
+  background: #060A12;
+  border-radius: 42px;
+  padding: 7px;
+  border: 1.5px solid #1A2530;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.03),
+    0 30px 60px -15px rgba(0, 0, 0, 0.7),
+    0 0 80px -20px color-mix(in srgb, var(--color-bask-accent) 20%, transparent);
+}
+
+.phone-screen {
+  width: 100%;
+  height: 100%;
+  border-radius: 36px;
+  overflow: hidden;
+  background: var(--color-bask-bg);
+  position: relative;
+}
+
+.phone-notch {
+  position: absolute;
+  top: 7px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 92px;
+  height: 26px;
+  background: #060A12;
+  border-radius: 0 0 16px 16px;
+  z-index: 20;
+}
+
+/* App store badge fallback styling */
+.store-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 22px;
+  border-radius: 12px;
+  border: 1px solid var(--color-bask-border-light);
+  background: rgba(255, 255, 255, 0.04);
+  transition: all 0.2s ease;
+}
+.store-badge:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--color-bask-accent);
+}
