@@ -1,4 +1,4 @@
-import { CloudRain } from "lucide-react"
+
 
 const FOOTER_LINKS = [
   {
@@ -31,13 +31,15 @@ const FOOTER_LINKS = [
 export function Footer() {
   return (
     <footer className="border-t border-bask-border bg-bask-surface/40">
-      <div className="mx-auto max-w-6xl px-5 py-12 sm:px-8 lg:px-10">
-        <div className="grid gap-10 md:grid-cols-[2fr_3fr]">
+      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-8 lg:px-10">
+        <div className="grid gap-8 sm:gap-10 md:grid-cols-[2fr_3fr]">
           <div>
-            <div className="flex items-center gap-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-bask-accent shadow-md shadow-bask-accent/30">
-                <CloudRain size={17} className="text-bask-bg" strokeWidth={2.5} />
-              </div>
+            <div className="flex items-center gap-2.5">
+              <img
+                src="/app-icon.png"
+                alt="Bask"
+                className="h-8 w-8 rounded-lg shadow-md shadow-bask-accent/30"
+              />
               <span className="font-display text-lg font-semibold tracking-tight text-bask-foreground">
                 Bask
               </span>
@@ -47,7 +49,7 @@ export function Footer() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">
+          <div className="grid grid-cols-2 gap-6 sm:gap-8 sm:grid-cols-3">
             {FOOTER_LINKS.map((group) => (
               <div key={group.title}>
                 <h4 className="text-xs font-semibold uppercase tracking-wider text-bask-subtle">
@@ -70,8 +72,8 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 border-t border-bask-border pt-6">
-          <p className="text-xs leading-relaxed text-bask-subtle">
+        <div className="mt-8 border-t border-bask-border pt-6 sm:mt-10">
+          <p className="text-[11px] leading-relaxed text-bask-subtle sm:text-xs">
             Bask is not a medical device. It is a tracking and pattern-discovery
             tool. Always consult your physician for migraine diagnosis, treatment,
             and medical advice. Your use of Bask does not create a

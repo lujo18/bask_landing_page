@@ -49,7 +49,7 @@ function Stars() {
 function TestimonialCard({ testimonial }: { testimonial: (typeof TESTIMONIALS)[number] }) {
   return (
     <StaggerItem>
-      <div className="flex h-full flex-col rounded-2xl border border-bask-border bg-bask-surface/60 p-6 backdrop-blur-sm transition-all duration-300 hover:border-bask-accent/30 hover:bg-bask-elevated/40">
+      <div className="flex h-full flex-col rounded-2xl border border-bask-border bg-bask-surface/60 p-5 backdrop-blur-sm transition-all duration-300 hover:border-bask-accent/30 hover:bg-bask-elevated/40 sm:p-6">
         <Stars />
 
         <blockquote className="mt-4 flex-1 text-sm leading-relaxed text-bask-foreground">
@@ -80,7 +80,7 @@ export function Testimonials() {
           </span>
         </Reveal>
         <Reveal delay={0.08}>
-          <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-bask-foreground sm:text-4xl lg:text-5xl">
+          <h2 className="mt-3 font-display text-[1.75rem] font-bold tracking-tight text-bask-foreground sm:text-4xl lg:text-5xl">
             People who stopped guessing
             <br className="hidden sm:block" />
             <span className="gradient-text"> and started knowing.</span>
@@ -88,7 +88,7 @@ export function Testimonials() {
         </Reveal>
       </div>
 
-      <Stagger className="grid gap-5 md:grid-cols-3">
+      <Stagger className="grid gap-4 sm:gap-5 md:grid-cols-3">
         {TESTIMONIALS.map((t) => (
           <TestimonialCard key={t.name} testimonial={t} />
         ))}

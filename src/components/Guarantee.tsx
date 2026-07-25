@@ -40,14 +40,14 @@ export function Guarantee() {
           </div>
         </Reveal>
         <Reveal delay={0.08}>
-          <h2 className="font-display text-3xl font-bold tracking-tight text-bask-foreground sm:text-4xl lg:text-5xl">
+          <h2 className="font-display text-[1.75rem] font-bold tracking-tight text-bask-foreground sm:text-4xl lg:text-5xl">
             No catch. No tricks.
             <br />
             <span className="gradient-text">Just your data, protected.</span>
           </h2>
         </Reveal>
         <Reveal delay={0.16}>
-          <p className="mt-5 text-base leading-relaxed text-bask-muted">
+          <p className="mt-5 text-sm leading-relaxed text-bask-muted sm:text-base">
             Bask was built privacy-first because migraine data is some of the
             most sensitive health information you have. Here's exactly what that
             means:
@@ -55,10 +55,10 @@ export function Guarantee() {
         </Reveal>
       </div>
 
-      <div className="mt-12 grid gap-5 sm:grid-cols-2">
+      <div className="mt-10 grid gap-4 sm:mt-12 sm:grid-cols-2 sm:gap-5">
         {GUARANTEES.map((item, i) => (
           <Reveal key={i} delay={i * 0.1}>
-            <div className="flex gap-4 rounded-2xl border border-bask-border bg-bask-surface/60 p-6 backdrop-blur-sm transition-all hover:border-bask-success/20">
+            <div className="flex gap-4 rounded-2xl border border-bask-border bg-bask-surface/60 p-5 backdrop-blur-sm transition-all hover:border-bask-success/20 sm:p-6">
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-bask-success/15">
                 <item.icon size={18} className="text-bask-success" />
               </div>

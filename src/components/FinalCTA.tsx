@@ -16,7 +16,7 @@ function PlayStoreIcon({ className = "" }: { className?: string }) {
 
 export function FinalCTA() {
   return (
-    <section id="download" className="relative overflow-hidden px-5 py-24 sm:py-32 sm:px-8 lg:px-10">
+    <section id="download" className="relative overflow-hidden px-4 py-20 sm:px-8 sm:py-32 lg:px-10">
       {/* Background effects */}
       <div
         className="pointer-events-none absolute inset-0"
@@ -43,7 +43,7 @@ export function FinalCTA() {
         </Reveal>
 
         <Reveal delay={0.08}>
-          <h2 className="font-display text-4xl font-bold leading-tight tracking-tight text-bask-foreground sm:text-5xl lg:text-6xl">
+          <h2 className="font-display text-[2rem] font-bold leading-tight tracking-tight text-bask-foreground sm:text-5xl lg:text-6xl">
             Stop guessing.
             <br />
             <span className="gradient-text">Start predicting.</span>
@@ -51,17 +51,17 @@ export function FinalCTA() {
         </Reveal>
 
         <Reveal delay={0.16}>
-          <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-bask-muted sm:text-lg">
+          <p className="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-bask-muted sm:text-lg">
             Download Bask free. Log your next attack in 30 seconds. Discover
             what's been triggering you all along.
           </p>
         </Reveal>
 
         <Reveal delay={0.24}>
-          <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+          <div className="mt-8 flex w-full flex-col items-center gap-4 sm:w-auto sm:flex-row sm:justify-center">
             <a
               href="#download"
-              className="group flex items-center justify-center gap-2 rounded-xl bg-bask-accent px-7 py-4 text-base font-semibold text-bask-bg transition-all hover:bg-bask-accent-bright hover:shadow-xl hover:shadow-bask-accent/30 active:scale-95"
+              className="group flex w-full items-center justify-center gap-2 rounded-xl bg-bask-accent px-7 py-4 text-base font-semibold text-bask-bg transition-all hover:bg-bask-accent-bright hover:shadow-xl hover:shadow-bask-accent/30 active:scale-95 sm:w-auto"
             >
               Download Bask — Free
               <ArrowRight size={17} className="transition-transform group-hover:translate-x-0.5" />
@@ -70,9 +70,9 @@ export function FinalCTA() {
         </Reveal>
 
         <Reveal delay={0.32}>
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+          <div className="mt-6 flex w-full flex-col gap-2.5 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-3">
             <a href="#download" className="store-badge">
-              <Apple size={22} className="text-bask-foreground" />
+              <Apple size={20} className="shrink-0 text-bask-foreground sm:size-[22px]" />
               <div className="flex flex-col items-start leading-none">
                 <span className="text-[9px] text-bask-muted">Download on the</span>
                 <span className="text-sm font-semibold text-bask-foreground">App Store</span>

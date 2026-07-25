@@ -43,14 +43,14 @@ function StepConnector() {
 export function HowItWorks() {
   return (
     <Section id="how-it-works" className="border-y border-bask-border bg-bask-surface/30">
-      <div className="mb-14 text-center">
+      <div className="mb-10 text-center sm:mb-14">
         <Reveal>
           <span className="text-sm font-semibold uppercase tracking-wider text-bask-accent">
             How it works
           </span>
         </Reveal>
         <Reveal delay={0.08}>
-          <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-bask-foreground sm:text-4xl lg:text-5xl">
+          <h2 className="mt-3 font-display text-[1.75rem] font-bold tracking-tight text-bask-foreground sm:text-4xl lg:text-5xl">
             From frustration to foresight
             <br className="hidden sm:block" />
             <span className="gradient-text"> in three steps.</span>
@@ -58,7 +58,7 @@ export function HowItWorks() {
         </Reveal>
       </div>
 
-      <div className="relative grid gap-10 lg:grid-cols-3 lg:gap-8">
+      <div className="relative grid gap-8 sm:gap-10 lg:grid-cols-3 lg:gap-8">
         <StepConnector />
 
         {STEPS.map((step, i) => (

@@ -1,17 +1,18 @@
 import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
-import { CloudRain } from "lucide-react"
 
 function Logo() {
   return (
-    <div className="flex items-center gap-2">
-      <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-bask-accent shadow-md shadow-bask-accent/30">
-        <CloudRain size={17} className="text-bask-bg" strokeWidth={2.5} />
-      </div>
+    <a href="#top" className="flex items-center gap-2.5">
+      <img
+        src="/app-icon.png"
+        alt="Bask"
+        className="h-8 w-8 rounded-lg shadow-md shadow-bask-accent/30"
+      />
       <span className="font-display text-lg font-semibold tracking-tight text-bask-foreground">
         Bask
       </span>
-    </div>
+    </a>
   )
 }
 
@@ -35,10 +36,8 @@ export function Header() {
           : "border-b border-transparent"
       }`}
     >
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-8 lg:px-10">
-        <a href="#top" className="shrink-0">
-          <Logo />
-        </a>
+      <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4 sm:h-16 sm:px-8 lg:px-10">
+        <Logo />
 
         <nav className="hidden items-center gap-8 md:flex">
           <a
@@ -63,7 +62,7 @@ export function Header() {
 
         <a
           href="#download"
-          className="rounded-xl bg-bask-accent px-4 py-2 text-sm font-semibold text-bask-bg transition-all hover:bg-bask-accent-bright hover:shadow-lg hover:shadow-bask-accent/30 active:scale-95"
+          className="rounded-lg bg-bask-accent px-3.5 py-1.5 text-xs font-semibold text-bask-bg transition-all hover:bg-bask-accent-bright hover:shadow-lg hover:shadow-bask-accent/30 active:scale-95 sm:rounded-xl sm:px-4 sm:py-2 sm:text-sm"
         >
           Download
         </a>

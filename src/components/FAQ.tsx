@@ -53,7 +53,7 @@ function FAQItem({
         className="flex w-full items-center justify-between gap-4 py-5 text-left"
         aria-expanded={isOpen}
       >
-        <span className="text-sm font-semibold text-bask-foreground sm:text-base">
+        <span className="text-[13px] font-semibold text-bask-foreground sm:text-base">
           {faq.question}
         </span>
         <motion.span
@@ -88,7 +88,7 @@ export function FAQ() {
 
   return (
     <Section id="faq">
-      <div className="grid gap-12 lg:grid-cols-[1fr_2fr] lg:items-start">
+      <div className="grid gap-8 lg:grid-cols-[1fr_2fr] lg:items-start lg:gap-12">
         <div className="lg:sticky lg:top-28">
           <Reveal>
             <span className="text-sm font-semibold uppercase tracking-wider text-bask-accent">
@@ -96,7 +96,7 @@ export function FAQ() {
             </span>
           </Reveal>
           <Reveal delay={0.08}>
-            <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-bask-foreground sm:text-4xl lg:text-5xl">
+            <h2 className="mt-3 font-display text-[1.75rem] font-bold tracking-tight text-bask-foreground sm:text-4xl lg:text-5xl">
               Everything you
               <br />
               <span className="gradient-text">want to know.</span>
@@ -116,7 +116,7 @@ export function FAQ() {
         </div>
 
         <Reveal delay={0.2}>
-          <div className="rounded-2xl border border-bask-border bg-bask-surface/40 px-6 backdrop-blur-sm sm:px-8">
+          <div className="rounded-2xl border border-bask-border bg-bask-surface/40 px-4 backdrop-blur-sm sm:px-8">
             {FAQS.map((faq, i) => (
               <Reveal key={i} delay={i * 0.05}>
                 <FAQItem

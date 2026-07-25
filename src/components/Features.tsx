@@ -30,7 +30,7 @@ function FeatureCard({ feature }: { feature: (typeof FEATURES)[number] }) {
 
   return (
     <StaggerItem>
-      <div className="group relative h-full overflow-hidden rounded-2xl border border-bask-border bg-bask-surface/60 p-6 backdrop-blur-sm transition-all duration-300 hover:border-bask-accent/40 hover:bg-bask-elevated/60 sm:p-7">
+      <div className="group relative h-full overflow-hidden rounded-2xl border border-bask-border bg-bask-surface/60 p-5 backdrop-blur-sm transition-all duration-300 hover:border-bask-accent/40 hover:bg-bask-elevated/60 sm:p-7">
         {/* Glow on hover */}
         <div
           className="pointer-events-none absolute -right-20 -top-20 h-40 w-40 rounded-full opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-20"
@@ -67,20 +67,20 @@ export function Features() {
           </span>
         </Reveal>
         <Reveal delay={0.08}>
-          <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-bask-foreground sm:text-4xl lg:text-5xl">
+          <h2 className="mt-3 font-display text-[1.75rem] font-bold tracking-tight text-bask-foreground sm:text-4xl lg:text-5xl">
             The migraine companion that
             <br className="hidden sm:block" />
             <span className="gradient-text"> actually finds your triggers.</span>
           </h2>
         </Reveal>
         <Reveal delay={0.16}>
-          <p className="mt-4 text-base text-bask-muted">
+          <p className="mt-4 text-sm text-bask-muted sm:text-base">
             Three things Bask does that paper diaries and generic apps never could.
           </p>
         </Reveal>
       </div>
 
-      <Stagger className="grid gap-5 md:grid-cols-3">
+      <Stagger className="grid gap-4 sm:gap-5 md:grid-cols-3">
         {FEATURES.map((feature) => (
           <FeatureCard key={feature.title} feature={feature} />
         ))}

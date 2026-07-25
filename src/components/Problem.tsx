@@ -50,14 +50,14 @@ export function Problem() {
             </span>
           </Reveal>
           <Reveal delay={0.08}>
-            <h2 className="font-display text-3xl font-bold leading-tight tracking-tight text-bask-foreground sm:text-4xl lg:text-5xl">
+            <h2 className="font-display text-[1.75rem] font-bold leading-tight tracking-tight text-bask-foreground sm:text-4xl lg:text-5xl">
               Migraines feel random.
               <br />
               <span className="gradient-text">They're not.</span>
             </h2>
           </Reveal>
           <Reveal delay={0.16}>
-            <p className="mt-5 max-w-md text-base leading-relaxed text-bask-muted">
+            <p className="mt-5 max-w-md text-sm leading-relaxed text-bask-muted sm:text-base">
               You've tried diaries and apps and hydration reminders. Nothing
               stuck — because the problem was never logging. It was that nobody
               connected your notes to the environmental factors that actually
@@ -65,7 +65,7 @@ export function Problem() {
             </p>
           </Reveal>
           <Reveal delay={0.24}>
-            <p className="mt-4 max-w-md text-base leading-relaxed text-bask-muted">
+            <p className="mt-4 max-w-md text-sm leading-relaxed text-bask-muted sm:text-base">
               Barometric pressure drops. Temperature swings. Sleep gaps. These
               are the signals your body responds to. Bask watches all of them —
               automatically.
@@ -74,7 +74,7 @@ export function Problem() {
         </div>
 
         <Reveal delay={0.2}>
-          <div className="grid gap-6 rounded-2xl border border-bask-border bg-bask-surface/60 p-6 backdrop-blur-sm sm:p-8">
+          <div className="grid gap-6 rounded-2xl border border-bask-border bg-bask-surface/60 p-5 backdrop-blur-sm sm:p-8 sm:gap-8">
             <div>
               <p className="mb-4 text-xs font-semibold uppercase tracking-wider text-bask-subtle">
                 What you've tried

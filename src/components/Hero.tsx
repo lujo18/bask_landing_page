@@ -18,7 +18,7 @@ function PlayStoreIcon({ className = "" }: { className?: string }) {
 
 function HeroContent() {
   return (
-    <div className="flex flex-col items-start gap-6">
+    <div className="flex flex-col items-start gap-5 sm:gap-6">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -26,14 +26,14 @@ function HeroContent() {
         className="inline-flex items-center gap-2 rounded-full border border-bask-border bg-bask-elevated/50 px-3 py-1.5 backdrop-blur-sm"
       >
         <span className="flex h-1.5 w-1.5 rounded-full bg-bask-success" />
-        <span className="text-xs font-medium text-bask-muted">Free to start — no account needed</span>
+        <span className="text-[11px] font-medium text-bask-muted sm:text-xs">Free to start — no account needed</span>
       </motion.div>
 
       <motion.h1
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.08, ease: EASE }}
-        className="font-display text-4xl font-bold leading-[1.05] tracking-tight text-bask-foreground sm:text-5xl lg:text-6xl xl:text-7xl"
+        className="font-display text-[2.25rem] font-bold leading-[1.05] tracking-tight text-bask-foreground sm:text-5xl lg:text-6xl xl:text-7xl"
       >
         Your migraines
         <br />
@@ -44,7 +44,7 @@ function HeroContent() {
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.16, ease: EASE }}
-        className="max-w-xl text-base leading-relaxed text-bask-muted sm:text-lg"
+        className="max-w-xl text-sm leading-relaxed text-bask-muted sm:text-lg"
       >
         Bask tracks barometric pressure, weather, and sleep patterns — then
         warns you before the next attack hits.
@@ -54,18 +54,18 @@ function HeroContent() {
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.24, ease: EASE }}
-        className="flex flex-col gap-4 sm:flex-row sm:items-center"
+        className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:items-center sm:gap-4"
       >
         <a
           href="#download"
-          className="group flex items-center justify-center gap-2 rounded-xl bg-bask-accent px-6 py-3.5 text-sm font-semibold text-bask-bg transition-all hover:bg-bask-accent-bright hover:shadow-xl hover:shadow-bask-accent/30 active:scale-95"
+          className="group flex w-full items-center justify-center gap-2 rounded-xl bg-bask-accent px-6 py-3.5 text-sm font-semibold text-bask-bg transition-all hover:bg-bask-accent-bright hover:shadow-xl hover:shadow-bask-accent/30 active:scale-95 sm:w-auto"
         >
           Download Bask — Free
           <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
         </a>
         <a
           href="#how-it-works"
-          className="flex items-center justify-center gap-2 rounded-xl border border-bask-border-light px-6 py-3.5 text-sm font-semibold text-bask-foreground transition-all hover:bg-bask-elevated active:scale-95"
+          className="flex w-full items-center justify-center gap-2 rounded-xl border border-bask-border-light px-6 py-3.5 text-sm font-semibold text-bask-foreground transition-all hover:bg-bask-elevated active:scale-95 sm:w-auto"
         >
           See how it works
         </a>
@@ -75,18 +75,18 @@ function HeroContent() {
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.32, ease: EASE }}
-        className="flex flex-col gap-3"
+        className="flex w-full flex-col gap-3"
       >
-        <div className="flex items-center gap-3">
+        <div className="flex w-full flex-col gap-2.5 sm:w-auto sm:flex-row sm:gap-3">
           <a href="#download" className="store-badge">
-            <Apple size={22} className="text-bask-foreground" />
+            <Apple size={20} className="shrink-0 text-bask-foreground sm:size-[22px]" />
             <div className="flex flex-col items-start leading-none">
               <span className="text-[9px] text-bask-muted">Download on the</span>
               <span className="text-sm font-semibold text-bask-foreground">App Store</span>
             </div>
           </a>
           <a href="#download" className="store-badge">
-            <PlayStoreIcon className="h-5 w-5" />
+            <PlayStoreIcon className="h-5 w-5 shrink-0" />
             <div className="flex flex-col items-start leading-none">
               <span className="text-[9px] text-bask-muted">GET IT ON</span>
               <span className="text-sm font-semibold text-bask-foreground">Google Play</span>
@@ -95,8 +95,8 @@ function HeroContent() {
         </div>
 
         <div className="flex items-center gap-2">
-          <ShieldCheck size={14} className="text-bask-success" />
-          <span className="text-xs text-bask-subtle">
+          <ShieldCheck size={14} className="shrink-0 text-bask-success" />
+          <span className="text-[11px] text-bask-subtle sm:text-xs">
             No account needed · iPhone & Android · Data stays private
           </span>
         </div>
@@ -107,7 +107,7 @@ function HeroContent() {
 
 export function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden px-5 pb-20 pt-28 sm:px-8 sm:pt-32 lg:px-10">
+    <section id="top" className="relative overflow-hidden px-4 pb-16 pt-20 sm:px-8 sm:pb-20 sm:pt-28 lg:px-10">
       {/* Background effects */}
       <div className="pointer-events-none absolute inset-0 bg-radial-fade" />
       <div className="pointer-events-none absolute inset-0 bg-grid opacity-40" />
@@ -116,7 +116,7 @@ export function Hero() {
         style={{ background: "radial-gradient(circle, var(--color-bask-accent), transparent 70%)" }}
       />
 
-      <div className="relative mx-auto grid w-full max-w-6xl items-center gap-12 lg:grid-cols-[1fr_auto]">
+      <div className="relative mx-auto grid w-full max-w-6xl items-center gap-10 lg:grid-cols-[1fr_auto] lg:gap-12">
         <HeroContent />
 
         <motion.div

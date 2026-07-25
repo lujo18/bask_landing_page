@@ -35,7 +35,7 @@ const CORRELATIONS = [
 function CorrelationCard() {
   return (
     <div className="rounded-2xl border border-bask-border bg-bask-surface/80 backdrop-blur-md">
-      <div className="flex items-center justify-between border-b border-bask-border px-6 py-4">
+      <div className="flex items-center justify-between border-b border-bask-border px-5 py-4 sm:px-6">
         <div className="flex items-center gap-2">
           <Brain size={16} className="text-bask-accent" />
           <span className="text-sm font-semibold text-bask-foreground">
@@ -45,7 +45,7 @@ function CorrelationCard() {
         <span className="text-[10px] font-medium text-bask-subtle">Sample</span>
       </div>
 
-      <div className="space-y-4 px-6 py-5">
+      <div className="space-y-4 px-5 py-5 sm:px-6">
         {CORRELATIONS.map((item, i) => (
           <div key={i}>
             <div className="mb-1.5 flex items-center justify-between">
@@ -69,7 +69,7 @@ function CorrelationCard() {
         ))}
       </div>
 
-      <div className="rounded-b-2xl border-t border-bask-border bg-bask-elevated/40 px-6 py-4">
+      <div className="rounded-b-2xl border-t border-bask-border bg-bask-elevated/40 px-5 py-4 sm:px-6">
         <div className="flex items-start gap-2">
           <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-md bg-bask-danger/20">
             <Sun size={11} className="text-bask-danger" />
@@ -89,7 +89,7 @@ function CorrelationCard() {
 export function Intelligence() {
   return (
     <Section>
-      <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+      <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
         <div>
           <Reveal>
             <span className="text-sm font-semibold uppercase tracking-wider text-bask-accent">
@@ -97,21 +97,21 @@ export function Intelligence() {
             </span>
           </Reveal>
           <Reveal delay={0.08}>
-            <h2 className="mt-3 font-display text-3xl font-bold leading-tight tracking-tight text-bask-foreground sm:text-4xl lg:text-5xl">
+            <h2 className="mt-3 font-display text-[1.75rem] font-bold leading-tight tracking-tight text-bask-foreground sm:text-4xl lg:text-5xl">
               Bask Intelligence
               <br />
               <span className="gradient-text">finds YOUR triggers.</span>
             </h2>
           </Reveal>
           <Reveal delay={0.16}>
-            <p className="mt-5 max-w-md text-base leading-relaxed text-bask-muted">
+            <p className="mt-5 max-w-md text-sm leading-relaxed text-bask-muted sm:text-base">
               Bask doesn't just track — it analyzes. Every attack you log is
               compared against 40+ environmental data points to find the patterns
               unique to your migraines.
             </p>
           </Reveal>
 
-          <div className="mt-8 grid gap-4 sm:grid-cols-2">
+          <div className="mt-8 grid gap-4 sm:mt-8 sm:grid-cols-2">
             {INTELLIGENCE_POINTS.map((point, i) => (
               <Reveal key={i} delay={0.2 + i * 0.08}>
                 <div className="flex gap-3">

@@ -80,7 +80,7 @@ export function Section({
   id?: string
 }) {
   return (
-    <section id={id} className={`relative px-5 py-20 sm:px-8 sm:py-28 lg:px-10 ${className}`}>
+    <section id={id} className={`relative px-4 py-14 sm:px-8 sm:py-20 lg:px-10 lg:py-24 ${className}`}>
       <div className="mx-auto w-full max-w-6xl">{children}</div>
     </section>
   )

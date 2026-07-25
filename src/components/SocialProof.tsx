@@ -24,11 +24,11 @@ export function SocialProof() {
   return (
     <Reveal>
       <div className="border-y border-bask-border bg-bask-surface/40 backdrop-blur-sm">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-8 gap-y-3 px-5 py-6 sm:px-8 lg:px-10">
+        <div className="mx-auto grid max-w-6xl grid-cols-2 gap-x-4 gap-y-3 px-4 py-5 sm:flex sm:flex-wrap sm:items-center sm:justify-center sm:gap-x-8 sm:gap-y-3 sm:px-8 sm:py-6 lg:px-10">
           {TRUST_SIGNALS.map((signal, i) => (
-            <div key={i} className="flex items-center gap-2">
-              <signal.icon size={15} className="text-bask-accent" />
-              <span className="text-xs font-medium text-bask-muted">{signal.text}</span>
+            <div key={i} className="flex items-center gap-2 sm:justify-center">
+              <signal.icon size={14} className="shrink-0 text-bask-accent sm:size-[15px]" />
+              <span className="text-[11px] font-medium text-bask-muted sm:text-xs">{signal.text}</span>
             </div>
           ))}
         </div>
