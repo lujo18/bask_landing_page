@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0A0F1A">
+  <title>404 — Bask</title>
+  <link rel="icon" type="image/png" href="./app-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --color-bask-bg: #0A0F1A;
+      --color-bask-surface: #0D1320;
+      --color-bask-elevated: #111B2A;
+      --color-bask-border: #1A2530;
+      --color-bask-border-light: #243240;
+      --color-bask-accent: #16B5A4;
+      --color-bask-accent-bright: #2DD4BF;
+      --color-bask-accent-dim: #0D6B62;
+      --color-bask-foreground: #F5F7FA;
+      --color-bask-muted: #8B9CA8;
+      --color-bask-subtle: #5A6878;
+      --color-bask-success: #4ADE80;
+      --font-display: "Space Grotesk", system-ui, sans-serif;
+      --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--color-bask-bg);
+      color: var(--color-bask-foreground);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background: var(--color-bask-bg);
+    }
+
+    .page-bg::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(22, 181, 164, 0.12) 0%, transparent 70%);
+    }
+
+    .grid-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      opacity: 0.4;
+      background-image:
+        linear-gradient(to right, rgba(26, 37, 48, 0.5) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(26, 37, 48, 0.5) 1px, transparent 1px);
+      background-size: 64px 64px;
+      pointer-events: none;
+    }
+
+    .accent-blob {
+      position: fixed;
+      top: 10%;
+      right: -10%;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--color-bask-accent), transparent 70%);
+      opacity: 0.2;
+      filter: blur(120px);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .header-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 24px;
+      background: rgba(13, 19, 32, 0.6);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--color-bask-border);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    .logo-wordmark {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--color-bask-foreground);
+    }
+
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 18px;
+      border-radius: 9999px;
+      background: var(--color-bask-accent);
+      color: var(--color-bask-bg);
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 600;
+      transition: background 200ms ease, transform 150ms ease, box-shadow 200ms ease;
+    }
+
+    .download-btn:hover {
+      background: var(--color-bask-accent-bright);
+      box-shadow: 0 0 32px -6px rgba(22, 181, 164, 0.45);
+    }
+
+    .download-btn:active {
+      transform: scale(0.97);
+    }
+
+    .main-section {
+      min-height: 100vh;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 24px 80px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      max-width: 640px;
+      width: 100%;
+      animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      opacity: 0;
+      transform: translateY(24px);
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      background: var(--color-bask-elevated);
+      border: 1px solid var(--color-bask-border);
+      color: var(--color-bask-muted);
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 28px;
+    }
+
+    .eyebrow-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--color-bask-success);
+    }
+
+    .headline {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 8vw, 56px);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #2DD4BF 0%, #16B5A4 50%, #5EEAD4 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+    }
+
+    .subtext {
+      font-family: var(--font-sans);
+      font-size: clamp(16px, 2.5vw, 18px);
+      line-height: 1.6;
+      color: var(--color-bask-muted);
+      max-width: 480px;
+      margin-bottom: 36px;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 28px;
+      border-radius: 12px;
+      background: var(--color-bask-accent);
+      color: var(--color-bask-bg);
+      font-family: var(--font-sans);
+      font-size: 15px;
+      font-weight: 600;
+      transition: background 200ms ease, transform 150ms ease, box-shadow 200ms ease;
+      box-shadow: 0 0 0 0 rgba(22, 181, 164, 0);
+    }
+
+    .btn-primary:hover {
+      background: var(--color-bask-accent-bright);
+      box-shadow: 0 0 40px -8px rgba(22, 181, 164, 0.5);
+    }
+
+    .btn-primary:active {
+      transform: scale(0.95);
+    }
+
+    .btn-primary svg {
+      width: 18px;
+      height: 18px;
+      transition: transform 200ms ease;
+      flex-shrink: 0;
+    }
+
+    .btn-primary:hover svg {
+      transform: translateX(3px);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 28px;
+      border-radius: 12px;
+      background: transparent;
+      border: 1px solid var(--color-bask-border-light);
+      color: var(--color-bask-foreground);
+      font-family: var(--font-sans);
+      font-size: 15px;
+      font-weight: 600;
+      transition: background 200ms ease, border-color 200ms ease, transform 150ms ease;
+    }
+
+    .btn-secondary:hover {
+      background: var(--color-bask-elevated);
+      border-color: var(--color-bask-border);
+    }
+
+    .btn-secondary:active {
+      transform: scale(0.97);
+    }
+
+    .footer {
+      position: static;
+      margin-top: auto;
+      padding-top: 48px;
+      text-align: center;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--color-bask-subtle);
+      letter-spacing: 0.01em;
+    }
+
+    @media (max-width: 480px) {
+      .header-bar {
+        padding: 14px 16px;
+      }
+
+      .download-btn {
+        padding: 7px 14px;
+        font-size: 13px;
+      }
+
+      .main-section {
+        padding: 120px 20px 64px;
+      }
+
+      .cta-row {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <script>
+    (function () {
+      var path = window.location.pathname.replace(/\/+$/, "");
+      var segments = path.split("/");
+      var last = segments[segments.length - 1];
+      var routes = ["privacy", "terms", "data-deletion"];
+      if (routes.indexOf(last) !== -1) {
+        window.location.replace(last + ".html" + window.location.search + window.location.hash);
+        return;
+      }
+    })();
+  </script>
+  <div class="page-bg" aria-hidden="true"></div>
+  <div class="grid-overlay" aria-hidden="true"></div>
+  <div class="accent-blob" aria-hidden="true"></div>
+
+  <header class="header-bar">
+    <a href="./" class="logo">
+      <img src="./app-icon.png" alt="" class="logo-icon" />
+      <span class="logo-wordmark">Bask</span>
+    </a>
+    <a href="./#download" class="download-btn">Download</a>
+  </header>
+
+  <main class="main-section">
+    <div class="content">
+      <div class="eyebrow">
+        <span class="eyebrow-dot" aria-hidden="true"></span>
+        Page not found
+      </div>
+
+      <h1 class="headline">This page took an <span class="gradient-text">unexpected</span> turn.</h1>
+
+      <p class="subtext">The page you're looking for doesn't exist — or it drifted off like a weather front.</p>
+
+      <div class="cta-row">
+        <a href="./" class="btn-primary">
+          Back to Bask
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 12h14"/>
+            <path d="m12 5 7 7-7 7"/>
+          </svg>
+        </a>
+        <a href="https://github.com/lujo18/migraine_app_landing_page/issues" target="_blank" rel="noopener noreferrer" class="btn-secondary">Report an issue</a>
+      </div>
+    </div>
+
+    <footer class="footer">
+      Bask — Predict your migraines before they hit.
+    </footer>
+  </main>
+</body>
+</html>

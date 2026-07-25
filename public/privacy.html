@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0A0F1A">
+  <title>Privacy Policy — Bask</title>
+  <meta name="description" content="Bask Privacy Policy — what data we collect, how we use it, and your rights.">
+  <link rel="icon" type="image/png" href="./app-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --color-bask-bg: #0A0F1A;
+      --color-bask-surface: #0D1320;
+      --color-bask-elevated: #111B2A;
+      --color-bask-border: #1A2530;
+      --color-bask-border-light: #243240;
+      --color-bask-accent: #16B5A4;
+      --color-bask-accent-bright: #2DD4BF;
+      --color-bask-accent-dim: #0D6B62;
+      --color-bask-foreground: #F5F7FA;
+      --color-bask-muted: #8B9CA8;
+      --color-bask-subtle: #5A6878;
+      --color-bask-success: #4ADE80;
+      --font-display: "Space Grotesk", system-ui, sans-serif;
+      --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background: var(--color-bask-bg);
+      color: var(--color-bask-foreground);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background: var(--color-bask-bg);
+    }
+
+    .page-bg::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(22, 181, 164, 0.12) 0%, transparent 70%);
+    }
+
+    .grid-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      opacity: 0.4;
+      background-image:
+        linear-gradient(to right, rgba(26, 37, 48, 0.5) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(26, 37, 48, 0.5) 1px, transparent 1px);
+      background-size: 64px 64px;
+      pointer-events: none;
+    }
+
+    .accent-blob {
+      position: fixed;
+      top: 10%;
+      right: -10%;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--color-bask-accent), transparent 70%);
+      opacity: 0.2;
+      filter: blur(120px);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .header-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 24px;
+      background: rgba(13, 19, 32, 0.6);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--color-bask-border);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    .logo-wordmark {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--color-bask-foreground);
+    }
+
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 18px;
+      border-radius: 9999px;
+      background: var(--color-bask-accent);
+      color: var(--color-bask-bg);
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 600;
+      transition: background 200ms ease, transform 150ms ease, box-shadow 200ms ease;
+    }
+
+    .download-btn:hover {
+      background: var(--color-bask-accent-bright);
+      box-shadow: 0 0 32px -6px rgba(22, 181, 164, 0.45);
+    }
+
+    .download-btn:active {
+      transform: scale(0.97);
+    }
+
+    .main-section {
+      min-height: 100vh;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 140px 24px 80px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .content {
+      max-width: 760px;
+      width: 100%;
+      animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      opacity: 0;
+      transform: translateY(24px);
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--color-bask-muted);
+      margin-bottom: 24px;
+      transition: color 200ms ease;
+    }
+
+    .back-link:hover {
+      color: var(--color-bask-accent);
+    }
+
+    .title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 8px;
+    }
+
+    .title-accent {
+      width: 4px;
+      height: 70%;
+      min-height: 32px;
+      border-radius: 9999px;
+      background: var(--color-bask-accent);
+      flex-shrink: 0;
+    }
+
+    .page-title {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 6vw, 48px);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--color-bask-foreground);
+    }
+
+    .effective-date {
+      font-family: var(--font-sans);
+      font-size: 14px;
+      color: var(--color-bask-subtle);
+      margin-bottom: 28px;
+      margin-left: 20px;
+    }
+
+    .lead {
+      font-family: var(--font-sans);
+      font-size: clamp(17px, 2.2vw, 18px);
+      line-height: 1.6;
+      color: var(--color-bask-muted);
+      margin-bottom: 1.25em;
+    }
+
+    .prose {
+      font-family: var(--font-sans);
+    }
+
+    .prose p {
+      font-size: clamp(15px, 1.8vw, 16px);
+      line-height: 1.7;
+      color: #A8B6C0;
+      margin-bottom: 1.25em;
+    }
+
+    .prose h2 {
+      font-family: var(--font-display);
+      font-size: clamp(20px, 2.8vw, 22px);
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--color-bask-foreground);
+      margin-top: 2em;
+      margin-bottom: 0.6em;
+    }
+
+    .prose h3 {
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--color-bask-foreground);
+      margin-top: 1.5em;
+      margin-bottom: 0.4em;
+    }
+
+    .prose ul,
+    .prose ol {
+      font-size: clamp(15px, 1.8vw, 16px);
+      line-height: 1.7;
+      color: #A8B6C0;
+      padding-left: 1.5em;
+      margin-bottom: 1.25em;
+    }
+
+    .prose li {
+      margin-bottom: 0.5em;
+    }
+
+    .prose li::marker {
+      color: var(--color-bask-accent);
+    }
+
+    .prose strong {
+      color: var(--color-bask-foreground);
+      font-weight: 600;
+    }
+
+    .prose a {
+      color: var(--color-bask-accent-bright);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      transition: color 200ms ease, text-decoration-thickness 200ms ease;
+    }
+
+    .prose a:hover {
+      color: var(--color-bask-accent);
+      text-decoration-thickness: 2px;
+    }
+
+    .prose code {
+      font-family: ui-monospace, SFMono-Regular, monospace;
+      font-size: 0.9em;
+      background: var(--color-bask-elevated);
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid var(--color-bask-border);
+      color: var(--color-bask-foreground);
+    }
+
+    .prose hr {
+      border: none;
+      border-top: 1px solid var(--color-bask-border);
+      margin: 2.5em 0;
+    }
+
+    .page-footer {
+      margin-top: 56px;
+      padding-top: 28px;
+      border-top: 1px solid var(--color-bask-border);
+    }
+
+    .footer-line {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--color-bask-subtle);
+      margin-bottom: 12px;
+    }
+
+    .footer-line a {
+      color: var(--color-bask-accent-bright);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .footer-line a:hover {
+      color: var(--color-bask-accent);
+      text-decoration-thickness: 2px;
+    }
+
+    .footer-separator {
+      margin: 0 8px;
+      color: var(--color-bask-border-light);
+    }
+
+    .disclaimer {
+      font-family: var(--font-sans);
+      font-size: 12px;
+      line-height: 1.5;
+      color: var(--color-bask-subtle);
+      margin-top: 16px;
+      max-width: 640px;
+    }
+
+    @media (max-width: 480px) {
+      .header-bar {
+        padding: 14px 16px;
+      }
+
+      .download-btn {
+        padding: 7px 14px;
+        font-size: 13px;
+      }
+
+      .main-section {
+        padding: 120px 20px 64px;
+      }
+
+      .title-wrap {
+        gap: 12px;
+      }
+
+      .title-accent {
+        min-height: 28px;
+      }
+
+      .effective-date {
+        margin-left: 16px;
+      }
+
+      .page-footer {
+        margin-top: 48px;
+      }
+    }
+
+    ::selection {
+      background-color: rgba(22, 181, 164, 0.3);
+      color: var(--color-bask-foreground);
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--color-bask-bg);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--color-bask-border-light);
+      border-radius: 9999px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--color-bask-accent-dim);
+    }
+  </style>
+</head>
+<body>
+  <div class="page-bg" aria-hidden="true"></div>
+  <div class="grid-overlay" aria-hidden="true"></div>
+  <div class="accent-blob" aria-hidden="true"></div>
+
+  <header class="header-bar">
+    <a href="./" class="logo">
+      <img src="./app-icon.png" alt="" class="logo-icon" />
+      <span class="logo-wordmark">Bask</span>
+    </a>
+    <a href="./#download" class="download-btn">Download</a>
+  </header>
+
+  <main class="main-section">
+    <article class="content">
+      <a href="./" class="back-link">← Back to Bask</a>
+
+      <div class="title-wrap">
+        <span class="title-accent" aria-hidden="true"></span>
+        <h1 class="page-title">Privacy Policy</h1>
+      </div>
+      <p class="effective-date">Last updated: July 2026</p>
+
+      <p class="lead">Your trust matters to us. This Privacy Policy explains what information Bask collects, how we use it, how we protect it, and the choices you have over your personal data.</p>
+
+      <div class="prose">
+        <h2>1. Introduction</h2>
+        <p>Bask (“we,” “us,” or “our”) is a migraine tracking and prediction application designed to help you log attacks, identify patterns, and receive risk insights based on environmental and behavioral data. This Privacy Policy applies to the Bask mobile application, related websites, and any services we provide.</p>
+        <p>If you have any questions about this policy or how we handle your data, please contact us at <code>privacy@bask.app</code>.</p>
+
+        <h2>2. Information We Collect</h2>
+
+        <h3>Health &amp; Symptom Data You Provide</h3>
+        <p>Bask is built around data you consciously enter. This may include migraine attack logs (start time, duration, severity, pain location on the head map, symptoms, suspected triggers, and personal notes), medication adherence records, daily check-in responses (such as wellness or feeling dial selections), and optional lifestyle factors you choose to track (sleep, water intake, meals, stress levels, and similar inputs). This data is yours, and it is used solely to power your personal tracking experience.</p>
+
+        <h3>Automatically Collected Data</h3>
+        <p>Some information is collected automatically to enable core features and improve reliability:</p>
+        <ul>
+          <li><strong>Barometric pressure and weather data.</strong> We retrieve pressure readings and related weather conditions from third-party services based on your device’s general location, if you grant location permission.</li>
+          <li><strong>Geolocation.</strong> Collected only when you grant permission and used solely for pressure correlation. We do not store precise location server-side.</li>
+          <li><strong>Device identifiers.</strong> On iOS, the advertising identifier (IDFA) is accessed only if you grant permission through App Tracking Transparency. Otherwise, we use a random app-scoped identifier. A similar approach applies on Android.</li>
+          <li><strong>Crash and usage data.</strong> Collected via Sentry to diagnose errors and understand feature usage.</li>
+          <li><strong>IP address.</strong> Transiently observed by network services but not persisted by Bask.</li>
+        </ul>
+
+        <h3>Data From Subscriptions</h3>
+        <p>If you subscribe to Bask Premium, Apple or Google processes your payment. We do not collect or store your credit card or banking information. We do receive a purchase entitlement status from Apple App Store or Google Play to confirm whether your subscription is active.</p>
+
+        <h2>3. How Bask Uses Your Data</h2>
+        <p>We use the information we collect for the following purposes:</p>
+        <ul>
+          <li>Generate migraine risk predictions and trigger-pattern analysis for you</li>
+          <li>Store, organize, and display your migraine history within the app</li>
+          <li>Deliver risk-alert notifications if you enable push notifications</li>
+          <li>Improve prediction accuracy using <strong>aggregated, anonymized</strong> data that cannot be linked back to individual users</li>
+          <li>Monitor crashes and analyze product usage through Sentry</li>
+          <li>Respond to your support requests and account inquiries</li>
+        </ul>
+
+        <h2>4. Where Your Data Is Stored</h2>
+        <p><strong>Your migraine logs and health data are stored locally on your device</strong> using on-device encrypted storage. We do not maintain a central server-side database of your personal health information.</p>
+        <p>If you opt in to sync, your data is synchronized to your personal iCloud or Google Drive account—your own cloud, not ours. Crash and usage analytics are sent to Sentry for troubleshooting purposes.</p>
+
+        <h2>5. Legal Basis for Processing (GDPR)</h2>
+        <p>For users in the European Economic Area, our legal bases include:</p>
+        <ul>
+          <li><strong>Consent (Art. 6(1)(a) GDPR):</strong> For optional analytics and certain non-essential processing.</li>
+          <li><strong>Contract performance (Art. 6(1)(b) GDPR):</strong> For processing necessary to provide Bask’s tracking, prediction, and sync features.</li>
+          <li><strong>Legitimate interests (Art. 6(1)(f) GDPR):</strong> For security, fraud prevention, and service integrity, balanced against your rights.</li>
+        </ul>
+
+        <h2>6. Data Sharing</h2>
+        <p><strong>We do not sell your personal data.</strong> We do not share your health data with third parties for advertising purposes.</p>
+        <p>We rely on a small number of service providers (“subprocessors”) to operate Bask:</p>
+        <ul>
+          <li><strong>Apple App Store / Google Play Store</strong> — subscription management and payment processing</li>
+          <li><strong>RevenueCat</strong> — subscription entitlement verification</li>
+          <li><strong>Sentry</strong> — crash reporting and error monitoring</li>
+        </ul>
+        <p>We may disclose information only when required by applicable law, such as in response to a valid court order or legal process.</p>
+
+        <h2>7. Your Privacy Rights</h2>
+        <p>Depending on where you live, you may have rights including: access, rectification, erasure, data portability, restriction of processing, and objection to processing. You may also withdraw consent where consent is the legal basis.</p>
+        <p>If you are a California resident, the CCPA grants you the right to know what personal information we collect, the right to deletion, and the right to opt out of the sale of personal information. Bask does not sell personal information.</p>
+        <p>To exercise any of these rights, go to <strong>Settings → Privacy</strong> in the app, or email us at <code>privacy@bask.app</code>. We will respond within 30 days.</p>
+
+        <h2>8. Data Retention</h2>
+        <p>On-device migraine logs and health data are retained until you delete them. If cloud sync is enabled, copies remain in your cloud account until you remove them there. Sentry crash data is retained for 90 days. Account and subscription records are retained as long as you maintain an active subscription and are deleted within 30 days of a verified account deletion request.</p>
+
+        <h2>9. International Data Transfers</h2>
+        <p>Sentry may process data in servers located in the United States, the European Union, or other jurisdictions. Transfers from the EEA are governed by Standard Contractual Clauses or other adequacy mechanisms. Your local health data never leaves your device except where you explicitly opt in to your own cloud sync.</p>
+
+        <h2>10. Children’s Privacy</h2>
+        <p>Bask is not directed to children under 13, or under 16 in the European Union. We do not knowingly collect personal information from children. If you believe a child has provided us with personal data, please contact <code>privacy@bask.app</code> so we can delete it.</p>
+
+        <h2>11. Cookies &amp; Tracking</h2>
+        <p>The Bask app does not use third-party advertising SDKs or cross-app tracking identifiers. Our marketing website uses only essential cookies necessary for basic functionality. We do not use tracking pixels or behavioral advertising cookies.</p>
+
+        <h2>12. Changes to This Policy</h2>
+        <p>We may update this Privacy Policy from time to time. If we make material changes, we will notify you in the app at least 30 days before the changes take effect. Continued use of Bask after the effective date constitutes acceptance of the revised policy.</p>
+
+        <h2>13. Contact</h2>
+        <p>For privacy-related questions or requests, please email <code>privacy@bask.app</code> or write to:</p>
+        <p><strong>Bask, Attn: Privacy</strong><br />[Address on file]</p>
+      </div>
+
+      <footer class="page-footer">
+        <p class="footer-line">
+          © 2026 Bask. All rights reserved.
+          <span class="footer-separator" aria-hidden="true">·</span>
+          <a href="./terms">Terms of Service</a>
+          <span class="footer-separator" aria-hidden="true">·</span>
+          <a href="./data-deletion">Data Deletion</a>
+        </p>
+        <p class="disclaimer">Bask is not a medical device. It is a tracking and pattern-discovery tool. Always consult your physician for migraine diagnosis, treatment, and medical advice.</p>
+      </footer>
+    </article>
+  </main>
+</body>
+</html>

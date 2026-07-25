@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0A0F1A">
+  <title>Data Deletion — Bask</title>
+  <meta name="description" content="How to request deletion of your Bask account and data, including what we delete and the timeline.">
+  <link rel="icon" type="image/png" href="./app-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --color-bask-bg: #0A0F1A;
+      --color-bask-surface: #0D1320;
+      --color-bask-elevated: #111B2A;
+      --color-bask-border: #1A2530;
+      --color-bask-border-light: #243240;
+      --color-bask-accent: #16B5A4;
+      --color-bask-accent-bright: #2DD4BF;
+      --color-bask-accent-dim: #0D6B62;
+      --color-bask-foreground: #F5F7FA;
+      --color-bask-muted: #8B9CA8;
+      --color-bask-subtle: #5A6878;
+      --color-bask-success: #4ADE80;
+      --font-display: "Space Grotesk", system-ui, sans-serif;
+      --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background: var(--color-bask-bg);
+      color: var(--color-bask-foreground);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background: var(--color-bask-bg);
+    }
+
+    .page-bg::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(22, 181, 164, 0.12) 0%, transparent 70%);
+    }
+
+    .grid-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      opacity: 0.4;
+      background-image:
+        linear-gradient(to right, rgba(26, 37, 48, 0.5) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(26, 37, 48, 0.5) 1px, transparent 1px);
+      background-size: 64px 64px;
+      pointer-events: none;
+    }
+
+    .accent-blob {
+      position: fixed;
+      top: 10%;
+      right: -10%;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--color-bask-accent), transparent 70%);
+      opacity: 0.2;
+      filter: blur(120px);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .header-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 24px;
+      background: rgba(13, 19, 32, 0.6);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--color-bask-border);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    .logo-wordmark {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--color-bask-foreground);
+    }
+
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 18px;
+      border-radius: 9999px;
+      background: var(--color-bask-accent);
+      color: var(--color-bask-bg);
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 600;
+      transition: background 200ms ease, transform 150ms ease, box-shadow 200ms ease;
+    }
+
+    .download-btn:hover {
+      background: var(--color-bask-accent-bright);
+      box-shadow: 0 0 32px -6px rgba(22, 181, 164, 0.45);
+    }
+
+    .download-btn:active {
+      transform: scale(0.97);
+    }
+
+    .main-section {
+      min-height: 100vh;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 140px 24px 80px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .content {
+      max-width: 760px;
+      width: 100%;
+      animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      opacity: 0;
+      transform: translateY(24px);
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--color-bask-muted);
+      margin-bottom: 24px;
+      transition: color 200ms ease;
+    }
+
+    .back-link:hover {
+      color: var(--color-bask-accent);
+    }
+
+    .title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 8px;
+    }
+
+    .title-accent {
+      width: 4px;
+      height: 70%;
+      min-height: 32px;
+      border-radius: 9999px;
+      background: var(--color-bask-accent);
+      flex-shrink: 0;
+    }
+
+    .page-title {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 6vw, 48px);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--color-bask-foreground);
+    }
+
+    .effective-date {
+      font-family: var(--font-sans);
+      font-size: 14px;
+      color: var(--color-bask-subtle);
+      margin-bottom: 28px;
+      margin-left: 20px;
+    }
+
+    .lead {
+      font-family: var(--font-sans);
+      font-size: clamp(17px, 2.2vw, 18px);
+      line-height: 1.6;
+      color: var(--color-bask-muted);
+      margin-bottom: 1.25em;
+    }
+
+    .prose {
+      font-family: var(--font-sans);
+    }
+
+    .prose p {
+      font-size: clamp(15px, 1.8vw, 16px);
+      line-height: 1.7;
+      color: #A8B6C0;
+      margin-bottom: 1.25em;
+    }
+
+    .prose h2 {
+      font-family: var(--font-display);
+      font-size: clamp(20px, 2.8vw, 22px);
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--color-bask-foreground);
+      margin-top: 2em;
+      margin-bottom: 0.6em;
+    }
+
+    .prose h3 {
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--color-bask-foreground);
+      margin-top: 1.5em;
+      margin-bottom: 0.4em;
+    }
+
+    .prose ul,
+    .prose ol {
+      font-size: clamp(15px, 1.8vw, 16px);
+      line-height: 1.7;
+      color: #A8B6C0;
+      padding-left: 1.5em;
+      margin-bottom: 1.25em;
+    }
+
+    .prose li {
+      margin-bottom: 0.5em;
+    }
+
+    .prose li::marker {
+      color: var(--color-bask-accent);
+    }
+
+    .prose strong {
+      color: var(--color-bask-foreground);
+      font-weight: 600;
+    }
+
+    .prose a {
+      color: var(--color-bask-accent-bright);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      transition: color 200ms ease, text-decoration-thickness 200ms ease;
+    }
+
+    .prose a:hover {
+      color: var(--color-bask-accent);
+      text-decoration-thickness: 2px;
+    }
+
+    .prose code {
+      font-family: ui-monospace, SFMono-Regular, monospace;
+      font-size: 0.9em;
+      background: var(--color-bask-elevated);
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid var(--color-bask-border);
+      color: var(--color-bask-foreground);
+    }
+
+    .prose hr {
+      border: none;
+      border-top: 1px solid var(--color-bask-border);
+      margin: 2.5em 0;
+    }
+
+    .page-footer {
+      margin-top: 56px;
+      padding-top: 28px;
+      border-top: 1px solid var(--color-bask-border);
+    }
+
+    .footer-line {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--color-bask-subtle);
+      margin-bottom: 12px;
+    }
+
+    .footer-line a {
+      color: var(--color-bask-accent-bright);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .footer-line a:hover {
+      color: var(--color-bask-accent);
+      text-decoration-thickness: 2px;
+    }
+
+    .footer-separator {
+      margin: 0 8px;
+      color: var(--color-bask-border-light);
+    }
+
+    .disclaimer {
+      font-family: var(--font-sans);
+      font-size: 12px;
+      line-height: 1.5;
+      color: var(--color-bask-subtle);
+      margin-top: 16px;
+      max-width: 640px;
+    }
+
+    @media (max-width: 480px) {
+      .header-bar {
+        padding: 14px 16px;
+      }
+
+      .download-btn {
+        padding: 7px 14px;
+        font-size: 13px;
+      }
+
+      .main-section {
+        padding: 120px 20px 64px;
+      }
+
+      .title-wrap {
+        gap: 12px;
+      }
+
+      .title-accent {
+        min-height: 28px;
+      }
+
+      .effective-date {
+        margin-left: 16px;
+      }
+
+      .page-footer {
+        margin-top: 48px;
+      }
+    }
+
+    ::selection {
+      background-color: rgba(22, 181, 164, 0.3);
+      color: var(--color-bask-foreground);
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--color-bask-bg);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--color-bask-border-light);
+      border-radius: 9999px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--color-bask-accent-dim);
+    }
+  </style>
+</head>
+<body>
+  <div class="page-bg" aria-hidden="true"></div>
+  <div class="grid-overlay" aria-hidden="true"></div>
+  <div class="accent-blob" aria-hidden="true"></div>
+
+  <header class="header-bar">
+    <a href="./" class="logo">
+      <img src="./app-icon.png" alt="" class="logo-icon" />
+      <span class="logo-wordmark">Bask</span>
+    </a>
+    <a href="./#download" class="download-btn">Download</a>
+  </header>
+
+  <main class="main-section">
+    <article class="content">
+      <a href="./" class="back-link">← Back to Bask</a>
+
+      <div class="title-wrap">
+        <span class="title-accent" aria-hidden="true"></span>
+        <h1 class="page-title">Data Deletion</h1>
+      </div>
+      <p class="effective-date">Last updated: July 2026</p>
+
+      <p class="lead">You have the right to request deletion of your Bask account and the data associated with it. This page explains how.</p>
+
+      <div class="prose">
+        <h2>1. Your Right to Deletion</h2>
+        <p>You can request deletion of your Bask account and personal data at any time. This right is grounded in GDPR Article 17 (the “Right to Erasure”), the California Consumer Privacy Act (CCPA) right to delete, and our own commitment to giving you control over your information, regardless of your jurisdiction.</p>
+
+        <h2>2. How to Request Deletion</h2>
+
+        <h3>Option A: In-App (Recommended)</h3>
+        <p>Open Bask, go to <strong>Settings → Privacy → Delete My Data</strong>, then follow the confirmation prompts. This is the fastest way to remove your data.</p>
+
+        <h3>Option B: By Email</h3>
+        <p>Send an email to <code>privacy@bask.app</code> with the subject line <strong>“Data Deletion Request”</strong> from the email address associated with your Bask account.</p>
+
+        <h2>3. Information to Include in Your Email Request</h2>
+        <p>If you request deletion by email, please include:</p>
+        <ul>
+          <li>The email address associated with your Bask account</li>
+          <li>A brief description of your request</li>
+          <li>Any additional verification information we may ask for</li>
+        </ul>
+        <p>We may ask for additional verification to confirm that you are the account owner before we process the request.</p>
+
+        <h2>4. What We Delete</h2>
+        <p>When you request deletion, we remove:</p>
+        <ul>
+          <li>Migraine attack logs, symptoms, notes, and head-pain location records</li>
+          <li>Daily check-in and wellness/feeling data</li>
+          <li>Medication adherence records</li>
+          <li>Risk predictions, pattern analyses, and any derived data tied to you</li>
+          <li>Your user profile and account settings</li>
+          <li>Cloud sync data, if sync was enabled. Because synced data resides in your iCloud or Google Drive account, we will instruct your cloud provider to remove Bask’s synced data. You may also need to delete any remaining copies directly from your cloud provider’s app.</li>
+          <li>Analytics events associated with your user ID, within 30 days</li>
+        </ul>
+
+        <h2>5. What We Retain</h2>
+        <p>There are a few narrow exceptions:</p>
+        <ul>
+          <li><strong>Anonymized, aggregated analytics</strong> that can no longer be linked to your identity and are used to improve the product</li>
+          <li><strong>Records required by law</strong>, such as financial and tax records related to subscription payments, retained in accordance with applicable tax law (typically up to 7 years)</li>
+          <li><strong>Records needed to prevent fraud</strong> or enforce our Terms of Service</li>
+        </ul>
+
+        <h2>6. Deletion Timeline</h2>
+        <p>We process verified deletion requests within 30 days. If a request is complex or unusually large, we may extend the timeline by an additional 60 days and will notify you of the reason and expected completion date. You will receive a confirmation email once deletion is complete.</p>
+
+        <h2>7. Effect on Your Subscription</h2>
+        <p><strong>Deleting your account and data does not automatically cancel an active subscription.</strong> Subscriptions are managed by Apple App Store or Google Play, and you must cancel through your device’s subscription settings. If you do not cancel before deletion, your subscription may continue to be billed, but you will no longer have an account to access Bask. We cannot issue refunds once an account has been deleted.</p>
+
+        <h2>8. Withdrawing Consent vs Full Deletion</h2>
+        <p>You do not need to delete your account to stop certain data uses. You may withdraw consent for specific processing, such as analytics, by visiting <strong>Settings → Privacy → Manage Consent</strong> without affecting your logs or predictions. Full deletion is permanent and cannot be reversed.</p>
+
+        <h2>9. Irreversibility Warning</h2>
+        <p>Account deletion is permanent. Once your data is deleted, it cannot be recovered. If there is any chance you may want your records later, export them first through <strong>Settings → Privacy → Export My Data</strong>.</p>
+
+        <h2>10. Contact</h2>
+        <p>If you have questions about data deletion, contact us at <code>privacy@bask.app</code>.</p>
+      </div>
+
+      <footer class="page-footer">
+        <p class="footer-line">
+          © 2026 Bask. All rights reserved.
+          <span class="footer-separator" aria-hidden="true">·</span>
+          <a href="./privacy">Privacy Policy</a>
+          <span class="footer-separator" aria-hidden="true">·</span>
+          <a href="./terms">Terms of Service</a>
+        </p>
+        <p class="disclaimer">Bask is not a medical device. It is a tracking and pattern-discovery tool. Always consult your physician for migraine diagnosis, treatment, and medical advice.</p>
+      </footer>
+    </article>
+  </main>
+</body>
+</html>

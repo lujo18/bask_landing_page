@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0A0F1A">
+  <title>Terms of Service — Bask</title>
+  <meta name="description" content="Bask Terms of Service — the terms under which you may use the Bask migraine tracking app.">
+  <link rel="icon" type="image/png" href="./app-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --color-bask-bg: #0A0F1A;
+      --color-bask-surface: #0D1320;
+      --color-bask-elevated: #111B2A;
+      --color-bask-border: #1A2530;
+      --color-bask-border-light: #243240;
+      --color-bask-accent: #16B5A4;
+      --color-bask-accent-bright: #2DD4BF;
+      --color-bask-accent-dim: #0D6B62;
+      --color-bask-foreground: #F5F7FA;
+      --color-bask-muted: #8B9CA8;
+      --color-bask-subtle: #5A6878;
+      --color-bask-success: #4ADE80;
+      --font-display: "Space Grotesk", system-ui, sans-serif;
+      --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background: var(--color-bask-bg);
+      color: var(--color-bask-foreground);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background: var(--color-bask-bg);
+    }
+
+    .page-bg::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(22, 181, 164, 0.12) 0%, transparent 70%);
+    }
+
+    .grid-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      opacity: 0.4;
+      background-image:
+        linear-gradient(to right, rgba(26, 37, 48, 0.5) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(26, 37, 48, 0.5) 1px, transparent 1px);
+      background-size: 64px 64px;
+      pointer-events: none;
+    }
+
+    .accent-blob {
+      position: fixed;
+      top: 10%;
+      right: -10%;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--color-bask-accent), transparent 70%);
+      opacity: 0.2;
+      filter: blur(120px);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .header-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 24px;
+      background: rgba(13, 19, 32, 0.6);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--color-bask-border);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    .logo-wordmark {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--color-bask-foreground);
+    }
+
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 18px;
+      border-radius: 9999px;
+      background: var(--color-bask-accent);
+      color: var(--color-bask-bg);
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 600;
+      transition: background 200ms ease, transform 150ms ease, box-shadow 200ms ease;
+    }
+
+    .download-btn:hover {
+      background: var(--color-bask-accent-bright);
+      box-shadow: 0 0 32px -6px rgba(22, 181, 164, 0.45);
+    }
+
+    .download-btn:active {
+      transform: scale(0.97);
+    }
+
+    .main-section {
+      min-height: 100vh;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 140px 24px 80px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .content {
+      max-width: 760px;
+      width: 100%;
+      animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      opacity: 0;
+      transform: translateY(24px);
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--color-bask-muted);
+      margin-bottom: 24px;
+      transition: color 200ms ease;
+    }
+
+    .back-link:hover {
+      color: var(--color-bask-accent);
+    }
+
+    .title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 8px;
+    }
+
+    .title-accent {
+      width: 4px;
+      height: 70%;
+      min-height: 32px;
+      border-radius: 9999px;
+      background: var(--color-bask-accent);
+      flex-shrink: 0;
+    }
+
+    .page-title {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 6vw, 48px);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--color-bask-foreground);
+    }
+
+    .effective-date {
+      font-family: var(--font-sans);
+      font-size: 14px;
+      color: var(--color-bask-subtle);
+      margin-bottom: 28px;
+      margin-left: 20px;
+    }
+
+    .lead {
+      font-family: var(--font-sans);
+      font-size: clamp(17px, 2.2vw, 18px);
+      line-height: 1.6;
+      color: var(--color-bask-muted);
+      margin-bottom: 1.25em;
+    }
+
+    .prose {
+      font-family: var(--font-sans);
+    }
+
+    .prose p {
+      font-size: clamp(15px, 1.8vw, 16px);
+      line-height: 1.7;
+      color: #A8B6C0;
+      margin-bottom: 1.25em;
+    }
+
+    .prose h2 {
+      font-family: var(--font-display);
+      font-size: clamp(20px, 2.8vw, 22px);
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--color-bask-foreground);
+      margin-top: 2em;
+      margin-bottom: 0.6em;
+    }
+
+    .prose h3 {
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--color-bask-foreground);
+      margin-top: 1.5em;
+      margin-bottom: 0.4em;
+    }
+
+    .prose ul,
+    .prose ol {
+      font-size: clamp(15px, 1.8vw, 16px);
+      line-height: 1.7;
+      color: #A8B6C0;
+      padding-left: 1.5em;
+      margin-bottom: 1.25em;
+    }
+
+    .prose li {
+      margin-bottom: 0.5em;
+    }
+
+    .prose li::marker {
+      color: var(--color-bask-accent);
+    }
+
+    .prose strong {
+      color: var(--color-bask-foreground);
+      font-weight: 600;
+    }
+
+    .prose a {
+      color: var(--color-bask-accent-bright);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      transition: color 200ms ease, text-decoration-thickness 200ms ease;
+    }
+
+    .prose a:hover {
+      color: var(--color-bask-accent);
+      text-decoration-thickness: 2px;
+    }
+
+    .prose code {
+      font-family: ui-monospace, SFMono-Regular, monospace;
+      font-size: 0.9em;
+      background: var(--color-bask-elevated);
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid var(--color-bask-border);
+      color: var(--color-bask-foreground);
+    }
+
+    .prose hr {
+      border: none;
+      border-top: 1px solid var(--color-bask-border);
+      margin: 2.5em 0;
+    }
+
+    .page-footer {
+      margin-top: 56px;
+      padding-top: 28px;
+      border-top: 1px solid var(--color-bask-border);
+    }
+
+    .footer-line {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--color-bask-subtle);
+      margin-bottom: 12px;
+    }
+
+    .footer-line a {
+      color: var(--color-bask-accent-bright);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .footer-line a:hover {
+      color: var(--color-bask-accent);
+      text-decoration-thickness: 2px;
+    }
+
+    .footer-separator {
+      margin: 0 8px;
+      color: var(--color-bask-border-light);
+    }
+
+    .disclaimer {
+      font-family: var(--font-sans);
+      font-size: 12px;
+      line-height: 1.5;
+      color: var(--color-bask-subtle);
+      margin-top: 16px;
+      max-width: 640px;
+    }
+
+    @media (max-width: 480px) {
+      .header-bar {
+        padding: 14px 16px;
+      }
+
+      .download-btn {
+        padding: 7px 14px;
+        font-size: 13px;
+      }
+
+      .main-section {
+        padding: 120px 20px 64px;
+      }
+
+      .title-wrap {
+        gap: 12px;
+      }
+
+      .title-accent {
+        min-height: 28px;
+      }
+
+      .effective-date {
+        margin-left: 16px;
+      }
+
+      .page-footer {
+        margin-top: 48px;
+      }
+    }
+
+    ::selection {
+      background-color: rgba(22, 181, 164, 0.3);
+      color: var(--color-bask-foreground);
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--color-bask-bg);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--color-bask-border-light);
+      border-radius: 9999px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--color-bask-accent-dim);
+    }
+  </style>
+</head>
+<body>
+  <div class="page-bg" aria-hidden="true"></div>
+  <div class="grid-overlay" aria-hidden="true"></div>
+  <div class="accent-blob" aria-hidden="true"></div>
+
+  <header class="header-bar">
+    <a href="./" class="logo">
+      <img src="./app-icon.png" alt="" class="logo-icon" />
+      <span class="logo-wordmark">Bask</span>
+    </a>
+    <a href="./#download" class="download-btn">Download</a>
+  </header>
+
+  <main class="main-section">
+    <article class="content">
+      <a href="./" class="back-link">← Back to Bask</a>
+
+      <div class="title-wrap">
+        <span class="title-accent" aria-hidden="true"></span>
+        <h1 class="page-title">Terms of Service</h1>
+      </div>
+      <p class="effective-date">Last updated: July 2026</p>
+
+      <p class="lead">These Terms of Service govern your use of the Bask mobile application. By creating an account or using Bask, you agree to these Terms.</p>
+
+      <div class="prose">
+        <h2>1. Acceptance of Terms</h2>
+        <p>By installing, accessing, or using Bask, you agree to be bound by these Terms of Service and our <a href="./privacy">Privacy Policy</a>. If you do not agree, please do not use Bask.</p>
+
+        <h2>2. Description of Service</h2>
+        <p>Bask is a mobile application that helps users track migraine attacks, identify patterns, and receive risk predictions based on environmental and behavioral data. We offer both free features and premium subscription features. Bask does not provide medical advice, diagnosis, or treatment.</p>
+
+        <h2>3. Eligibility</h2>
+        <p>You must be at least 13 years old to use Bask, or 16 years old if you are in the European Union. By using Bask, you represent and warrant that you meet this requirement and are legally able to enter into a binding contract.</p>
+
+        <h2>4. Your Account</h2>
+        <p>You agree to provide accurate information when creating an account and to keep your login credentials secure. You are responsible for all activity that occurs under your account. If you suspect unauthorized access, notify us immediately at <code>support@bask.app</code>.</p>
+
+        <h2>5. Acceptable Use</h2>
+        <p>You agree not to:</p>
+        <ul>
+          <li>Reverse-engineer, decompile, or disassemble any part of Bask</li>
+          <li>Scrape, crawl, or use automated means to access Bask or its data</li>
+          <li>Attempt to access another user’s account or data</li>
+          <li>Use Bask for any unlawful, fraudulent, or harmful purpose</li>
+          <li>Transmit viruses, malware, or other harmful code</li>
+          <li>Interfere with the operation, security, or availability of Bask</li>
+          <li>Use automated scripts to access any Bask API or service</li>
+          <li>Attempt to subvert Bask’s subscription, entitlement, or billing systems</li>
+        </ul>
+
+        <h2>6. Subscriptions &amp; Billing</h2>
+        <p>Bask offers an auto-renewing subscription that unlocks premium features. All payments are processed by Apple App Store or Google Play, and their terms and policies apply. Subscriptions automatically renew unless you cancel at least 24 hours before the end of the current billing period.</p>
+        <p>You can manage or cancel your subscription through your Apple ID or Google Play account settings. Refunds are handled according to Apple or Google policies; we cannot issue refunds directly. If we change subscription pricing for renewals, we will notify you at least 30 days in advance, and you may cancel before the new price takes effect.</p>
+
+        <h2>7. License to Use Bask</h2>
+        <p>Subject to these Terms, we grant you a personal, non-exclusive, non-transferable, revocable license to use Bask for its intended purpose. We reserve the right to modify features, pricing, or availability, or to discontinue the service, with reasonable notice when feasible.</p>
+
+        <h2>8. Intellectual Property</h2>
+        <p>Bask, including its name, logo, designs, code, text, graphics, and software, is owned by Bask and its licensors. These Terms do not grant you any ownership interest or rights beyond the limited license expressly stated. Any feedback or suggestions you provide may be used by us without obligation or compensation.</p>
+
+        <h2>9. User Content &amp; Data Ownership</h2>
+        <p><strong>You own your migraine logs and health data.</strong> We process them on your behalf to provide Bask’s tracking, prediction, and analytics features as described in our Privacy Policy. By entering data into Bask, you grant us a limited, non-exclusive license to process that data to generate predictions and aggregated analytics only as permitted by the Privacy Policy. You may export your data at any time through the app.</p>
+
+        <h2>10. Disclaimers</h2>
+        <p>Bask and its predictions are provided “AS IS” and “AS AVAILABLE,” without warranties of any kind, express or implied, to the fullest extent permitted by law.</p>
+        <ul>
+          <li>Bask is <strong>not</strong> a medical device under FDA, EU MDR, or comparable regulations.</li>
+          <li>Bask does <strong>not</strong> provide medical advice, diagnosis, or treatment recommendations.</li>
+          <li>Bask’s predictions are statistical estimates based on patterns in your data; they are <strong>not guarantees</strong>.</li>
+          <li>Use of Bask does <strong>not</strong> create a doctor-patient relationship.</li>
+          <li>Always consult a qualified physician for medical decisions related to migraine diagnosis or treatment.</li>
+        </ul>
+
+        <h2>11. Limitation of Liability</h2>
+        <p>To the maximum extent permitted by law, Bask and its team shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or for any loss of profits, data, or health-related harm arising from your use of or inability to use Bask. Our aggregate liability is limited to the greater of (a) the amount you paid for Bask in the 12 months preceding the claim, or (b) $50. This limitation does not apply to liability that cannot be excluded under applicable law.</p>
+
+        <h2>12. Indemnification</h2>
+        <p>You agree to indemnify and hold harmless Bask and its team from any claims, losses, liabilities, and expenses arising out of your misuse of Bask, your violation of these Terms, or your violation of any third-party rights.</p>
+
+        <h2>13. Termination</h2>
+        <p>We may suspend or terminate your access to Bask if you violate these Terms or engage in conduct that harms Bask or other users. You may stop using Bask at any time and may request account deletion through Settings or our <a href="./data-deletion">Data Deletion</a> process. Provisions that by their nature should survive termination, including disclaimers, intellectual property rights, and indemnification, will survive.</p>
+
+        <h2>14. Governing Law &amp; Dispute Resolution</h2>
+        <p>These Terms are governed by the laws of the State of Delaware, USA, without regard to conflict-of-laws principles. Any dispute, claim, or controversy arising out of these Terms or your use of Bask will be resolved through binding arbitration on an individual basis, except that either party may seek relief in small claims court. Class actions and class-wide arbitration are not permitted. Before initiating arbitration, the parties agree to a 30-day informal resolution period.</p>
+
+        <h2>15. Changes to These Terms</h2>
+        <p>We may update these Terms from time to time. Material changes will be notified in the app at least 30 days before they take effect. Continued use of Bask after the effective date of the revised Terms constitutes acceptance of the changes.</p>
+
+        <h2>16. Contact</h2>
+        <p>For questions about these Terms, contact us at <code>terms@bask.app</code>.</p>
+      </div>
+
+      <footer class="page-footer">
+        <p class="footer-line">
+          © 2026 Bask. All rights reserved.
+          <span class="footer-separator" aria-hidden="true">·</span>
+          <a href="./privacy">Privacy Policy</a>
+          <span class="footer-separator" aria-hidden="true">·</span>
+          <a href="./data-deletion">Data Deletion</a>
+        </p>
+        <p class="disclaimer">Bask is not a medical device. It is a tracking and pattern-discovery tool. Always consult your physician for migraine diagnosis, treatment, and medical advice.</p>
+      </footer>
+    </article>
+  </main>
+</body>
+</html>

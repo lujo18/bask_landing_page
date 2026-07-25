@@ -21,9 +21,9 @@ const FOOTER_LINKS = [
   {
     title: "Legal",
     links: [
-      { label: "Privacy Policy", href: "#" },
-      { label: "Terms of Service", href: "#" },
-      { label: "Data Deletion", href: "#" },
+      { label: "Privacy Policy", href: "/privacy" },
+      { label: "Terms of Service", href: "/terms" },
+      { label: "Data Deletion", href: "/data-deletion" },
     ],
   },
 ]
