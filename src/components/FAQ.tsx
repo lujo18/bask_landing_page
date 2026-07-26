@@ -106,7 +106,7 @@ export function FAQ() {
             <p className="mt-4 text-sm text-bask-muted">
               Can't find your answer?{" "}
               <a
-                href="mailto:support@bask.app"
+                href="mailto:support@baskmigraine.app"
                 className="font-medium text-bask-accent-bright underline decoration-bask-accent/30 underline-offset-2 hover:decoration-bask-accent"
               >
                 We'll help you directly.

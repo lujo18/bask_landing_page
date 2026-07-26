@@ -342,7 +342,7 @@
       var path = window.location.pathname.replace(/\/+$/, "");
       var segments = path.split("/");
       var last = segments[segments.length - 1];
-      var routes = ["privacy", "terms", "data-deletion"];
+      var routes = ["privacy", "terms", "data-deletion", "content-policy"];
       if (routes.indexOf(last) !== -1) {
         window.location.replace(last + ".html" + window.location.search + window.location.hash);
         return;

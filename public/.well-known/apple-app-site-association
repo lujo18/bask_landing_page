@@ -1,0 +1,25 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appIDs": ["MUC3KX57AL.com.bask.migraine"],
+        "components": [
+          {
+            "/": "/*",
+            "exclude": [
+              { "/": "/privacy" },
+              { "/": "/privacy.html" },
+              { "/": "/terms" },
+              { "/": "/terms.html" },
+              { "/": "/content-policy" },
+              { "/": "/content-policy.html" },
+              { "/": "/data-deletion" },
+              { "/": "/data-deletion.html" }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

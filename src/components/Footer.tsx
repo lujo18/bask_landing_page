@@ -13,9 +13,8 @@ const FOOTER_LINKS = [
   {
     title: "Company",
     links: [
-      { label: "About", href: "#" },
-      { label: "Support", href: "mailto:support@bask.app" },
-      { label: "Contact", href: "mailto:hello@bask.app" },
+      { label: "Support", href: "mailto:support@baskmigraine.app" },
+      { label: "Contact", href: "mailto:support@baskmigraine.app" },
     ],
   },
   {

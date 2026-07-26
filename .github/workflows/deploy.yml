@@ -34,7 +34,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Build
-        # Base path defaults to '/' because this site is served from a custom domain (baskhealth.app).
+        # Base path defaults to '/' because this site is served from a custom domain (baskmigraine.app).
         # No special base path injection is required.
         run: npm run build
       - name: Setup Pages

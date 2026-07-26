@@ -93,6 +93,12 @@ export function Testimonials() {
           <TestimonialCard key={t.name} testimonial={t} />
         ))}
       </Stagger>
+
+      <p className="mx-auto mt-10 max-w-2xl text-center text-xs leading-relaxed text-bask-subtle sm:text-sm">
+        If these testimonials resonate, they reflect common migraine experiences.
+        They are illustrative composite profiles, not verbatim reviews from named
+        individuals.
+      </p>
     </Section>
   )
 }
